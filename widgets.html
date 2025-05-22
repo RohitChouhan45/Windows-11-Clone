@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11 Widgets</title>
+    <link rel="stylesheet" href="widgets.css">
+</head>
+<body>
+    <div class="widgets-header">
+        <span>Widgets</span>
+        <span class="close-widgets" id="close-widgets">×</span>
+    </div>
+    <div class="widgets-content">
+        <div class="widget weather-widget">
+            <div class="widget-header">
+                <span>Weather</span>
+                <span>⋮</span>
+            </div>
+            <div class="widget-content">
+                <div class="weather-icon">☀️</div>
+                <div class="weather-info">
+                    <div class="weather-temp">72°F</div>
+                    <div class="weather-desc">Sunny</div>
+                    <div class="weather-location">Seattle, WA</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="widget news-widget">
+            <div class="widget-header">
+                <span>News</span>
+                <span>⋮</span>
+            </div>
+            <div class="widget-content">
+                <div class="news-item">
+                    <div class="news-title">Technology trends for 2023</div>
+                    <div class="news-source">Tech Today</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">New software update available</div>
+                    <div class="news-source">Windows Blog</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-title">Global market update</div>
+                    <div class="news-source">Finance News</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="widget calendar-widget">
+            <div class="widget-header">
+                <span>Calendar</span>
+                <span>⋮</span>
+            </div>
+            <div class="widget-content">
+                <div class="calendar-header">
+                    <div class="calendar-month">January 2023</div>
+                    <div class="calendar-nav">
+                        <button>←</button>
+                        <button>→</button>
+                    </div>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day">Su</div>
+                    <div class="calendar-day">Mo</div>
+                    <div class="calendar-day">Tu</div>
+                    <div class="calendar-day">We</div>
+                    <div class="calendar-day">Th</div>
+                    <div class="calendar-day">Fr</div>
+                    <div class="calendar-day">Sa</div>
+                    
+                    <div class="calendar-date">1</div>
+                    <div class="calendar-date today">2</div>
+                    <div class="calendar-date">3</div>
+                    <div class="calendar-date">4</div>
+                    <div class="calendar-date">5</div>
+                    <div class="calendar-date">6</div>
+                    <div class="calendar-date">7</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="widget stocks-widget">
+            <div class="widget-header">
+                <span>Stocks</span>
+                <span>⋮</span>
+            </div>
+            <div class="widget-content">
+                <div class="stock-item">
+                    <span class="stock-symbol">AAPL</span>
+                    <span class="stock-change positive">+1.5%</span>
+                </div>
+                <div class="stock-item">
+                    <span class="stock-symbol">MSFT</span>
+                    <span class="stock-change negative">-0.8%</span>
+                </div>
+                <div class="stock-item">
+                    <span class="stock-symbol">GOOGL</span>
+                    <span class="stock-change positive">+0.3%</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="widget quick-notes-widget">
+            <div class="widget-header">
+                <span>Quick Notes</span>
+                <span>⋮</span>
+            </div>
+            <div class="widget-content">
+                <textarea placeholder="Type your notes here..."></textarea>
+            </div>
+        </div>
+        
+        <div class="widget todo-widget">
+            <div class="widget-header">
+                <span>To-Do List</span>
+                <span>⋮</span>
+            </div>
+            <div class="widget-content">
+                <ul class="todo-list">
+                    <li class="todo-item">
+                        <input type="checkbox" id="todo1">
+                        <span>Finish project report</span>
+                    </li>
+                    <li class="todo-item completed">
+                        <input type="checkbox" id="todo2" checked>
+                        <span>Buy groceries</span>
+                    </li>
+                    <li class="todo-item">
+                        <input type="checkbox" id="todo3">
+                        <span>Schedule dentist appointment</span>
+                    </li>
+                </ul>
+                <div class="add-todo">
+                    <input type="text" placeholder="Add a new task">
+                    <button>Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('close-widgets').addEventListener('click', () => {
+            window.parent.document.getElementById('widgets-panel').classList.remove('open');
+        });
+
+        // To-Do List Widget Interactivity
+        const todoList = document.querySelector('.todo-list');
+        const todoInput = document.querySelector('.add-todo input');
+        const todoAddButton = document.querySelector('.add-todo button');
+
+        todoList.addEventListener('change', (e) => {
+            if (e.target.type === 'checkbox') {
+                e.target.closest('.todo-item').classList.toggle('completed');
+            }
+        });
+
+        todoAddButton.addEventListener('click', () => {
+            const taskText = todoInput.value.trim();
+            if (taskText) {
+                const newTodoItem = document.createElement('li');
+                newTodoItem.classList.add('todo-item');
+                newTodoItem.innerHTML = `
+                    <input type="checkbox" id="todo${todoList.children.length + 1}">
+                    <span>${taskText}</span>
+                `;
+                todoList.appendChild(newTodoItem);
+                todoInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>

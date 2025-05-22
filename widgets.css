@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: rgba(243, 243, 243, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 25px;
+    height: 100vh;
+    overflow-y: auto;
+    color: #333;
+    cursor: url('/cursor (1).cur'), auto;
+}
+
+.widgets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.close-widgets {
+    cursor: pointer;
+    font-size: 24px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.close-widgets:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.widgets-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.widget {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.widget:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.widget-header {
+    padding: 12px 15px;
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.widget-content {
+    padding: 15px;
+}
+
+/* Weather Widget */
+.weather-widget .widget-content {
+    display: flex;
+    align-items: center;
+}
+
+.weather-icon {
+    font-size: 50px;
+    margin-right: 15px;
+}
+
+.weather-temp {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.weather-desc, .weather-location {
+    font-size: 14px;
+    color: #666;
+}
+
+/* News Widget */
+.news-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-title {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.news-source {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Calendar Widget */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-month {
+    font-weight: 600;
+}
+
+.calendar-nav {
+    display: flex;
+}
+
+.calendar-nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    text-align: center;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.calendar-date {
+    text-align: center;
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 50%;
+}
+
+.calendar-date.today {
+    background-color: #0078d7;
+    color: white;
+}
+
+a, button, .widget-header span, .close-widgets, .calendar-nav button {
+    cursor: url('/cursor (2).cur'), pointer;
+}
+
+/* New Stocks Widget */
+.stocks-widget .stock-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.stock-item:last-child {
+    border-bottom: none;
+}
+
+.stock-symbol {
+    font-weight: 600;
+}
+
+.stock-change {
+    font-size: 12px;
+}
+
+.stock-change.positive {
+    color: green;
+}
+
+.stock-change.negative {
+    color: red;
+}
+
+/* Quick Notes Widget */
+.quick-notes-widget textarea {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    padding: 10px;
+    resize: vertical;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* To-Do List Widget */
+.todo-widget .todo-list {
+    list-style-type: none;
+}
+
+.todo-widget .todo-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.todo-item:last-child {
+    border-bottom: none;
+}
+
+.todo-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.todo-item.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.add-todo {
+    display: flex;
+    margin-top: 10px;
+}
+
+.add-todo input {
+    flex-grow: 1;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+}
+
+.add-todo button {
+    padding: 8px 15px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.add-todo button:hover {
+    background-color: #0066b5;
+}

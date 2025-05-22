@@ -1,0 +1,322 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try Windows 11</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        a, button, .desktop-icon, .taskbar-icon, #start-button, .widgets-button, 
+        .time-display, .close-widgets, .app-item, .recommended-item, .user-profile, 
+        .power-button, .calendar-nav button {
+            cursor: url('/cursor (2).cur'), pointer;
+            transition: all 0.2s ease;
+        }
+
+        body {
+            cursor: url('/cursor (1).cur'), auto;
+            overflow: hidden;
+        }
+
+        .lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Windows-11-Flow-Background.jpg');
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            padding-top: 100px;
+        }
+
+        .lock-screen-content {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .lock-screen-time {
+            font-size: 6rem;
+            font-weight: 200;
+            margin-bottom: 10px;
+        }
+
+        .lock-screen-date {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .lock-screen-bottom-right {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .lock-screen-wifi {
+            width: 30px;
+            filter: invert(1);
+        }
+
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Windows-11-Flow-Background.jpg');
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(10px); 
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .login-screen-user {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-screen-user-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            color: #0078d7;
+            font-size: 48px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-screen-pin {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pin-input {
+            margin-bottom: 20px;
+        }
+
+        .pin-input input {
+            width: 250px;
+            height: 40px;
+            text-align: center;
+            font-size: 18px;
+            border: none;
+            border-bottom: 2px solid white;
+            background: transparent;
+            color: white;
+        }
+
+        .sign-in-button {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 4px;
+            margin: 15px 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .sign-in-button:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .error {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-10px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div id="desktop">
+        <div id="desktop-icons">
+            <div class="desktop-icon" data-app="file-explorer">
+                <img src="file-explorer-folder-libraries-icon-18298.png" alt="File Explorer">
+                <span>File Explorer</span>
+            </div>
+            <div class="desktop-icon" data-app="edge">
+                <img src="Microsoft Edge.png" alt="Microsoft Edge">
+                <span>Microsoft Edge</span>
+            </div>
+            <div class="desktop-icon" data-app="word">
+                <img src="/word.svg" alt="Word">
+                <span>Word</span>
+            </div>
+            <div class="desktop-icon" data-app="store">
+                <img src="microsoft-store-2022.svg" alt="Microsoft Store">
+                <span>Microsoft Store</span>
+            </div>
+            <div class="desktop-icon" data-app="chrome">
+                <img src="Google_Chrome_icon_(February_2022).svg.png" alt="Chrome">
+                <span>Chrome</span>
+            </div>
+            <div class="desktop-icon" data-app="spotify">
+                <img src="spotify-2.svg" alt="Spotify">
+                <span>Spotify</span>
+            </div>
+            <div class="desktop-icon" data-app="netflix">
+                <img src="netflix-logo-icon.svg" alt="Netflix">
+                <span>Netflix</span>
+            </div>
+            <div class="desktop-icon" data-app="settings">
+                <img src="settings.ico" alt="Settings">
+                <span>Settings</span>
+            </div>
+            <div class="desktop-icon" data-app="notepad">
+                <img src="notepad.ico" alt="Notepad">
+                <span>Notepad</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="startmenu">
+        <iframe id="start-menu-iframe" src="startmenu.html" frameborder="0"></iframe>
+    </div>
+
+    <div class="widgets-panel" id="widgets-panel">
+        <iframe id="widgets-iframe" src="widgets.html" frameborder="0"></iframe>
+    </div>
+
+    <div class="taskbar">
+        <div class="widgets-button" id="widgets-button">
+            <div class="weather-preview">
+                <span class="weather-icon" style="font-size: 14px;">☀️</span>
+                <span class="weather-temp">72°</span>
+            </div>
+        </div>
+        <img src="start.ico" alt="Start" id="start-button">
+        <div id="taskbar-icons">
+            <input type="text" id="search-bar" placeholder="Search..." class="search-bar">
+            <img src="file-explorer-folder-libraries-icon-18298.png" alt="File Explorer" class="taskbar-icon" data-app="file-explorer">
+            <img src="Microsoft Edge.png" alt="Microsoft Edge" class="taskbar-icon" data-app="edge">
+            <img src="microsoft-store-2022.svg" alt="Microsoft Store" class="taskbar-icon" data-app="store">
+        </div>
+        <div class="right">
+            <div class="taskbar-tray">
+                <img src="Windows 11 Show Hidden Icons Icon.png" alt="Show Hidden Icons">
+                <img src="Windows 11 Wifi symbol.png" alt="WiFi">
+                <img src="Windows 11 Sound Symbol.png" alt="Sound">
+                <img src="Windows 11 Battery symbol.png" alt="Battery">
+                <div class="time-display">
+                    <div id="current-time">12:00 PM</div>
+                    <div id="current-date">1/1/2023</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="startup-sound" src="/windows-11-startup-sound-effect.mp3"></audio>
+    <audio id="notification-sound" src="/Windows Notify.wav"></audio>
+    <audio id="click-sound" src="/Windows Navigation Start.wav"></audio>
+
+    <div class="lock-screen" id="lock-screen">
+        <div class="lock-screen-content">
+            <div class="lock-screen-time" id="lock-screen-time">11:11</div>
+            <div class="lock-screen-date" id="lock-screen-date">Wednesday, November 11</div>
+        </div>
+
+        <div class="lock-screen-bottom-right">
+            <img src="Windows 11 Wifi symbol.png" alt="WiFi" class="lock-screen-wifi">
+        </div>
+    </div>
+
+    <div class="login-screen" id="login-screen">
+        <div class="login-screen-user">
+            <div class="login-screen-user-icon">U</div>
+            <h2>User</h2>
+        </div>
+        <div class="login-screen-pin">
+            <div class="pin-input">
+                <input type="password" placeholder="PIN">
+            </div>
+            <div class="sign-in-button">Sign In</div>
+            <a href="#" style="color: white; text-decoration: none;">I forgot my PIN</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function updateLockScreenTime() {
+            const now = new Date();
+            const timeElement = document.getElementById('lock-screen-time');
+            const dateElement = document.getElementById('lock-screen-date');
+            
+            // Time formatting
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            hours = hours % 12 || 12; // Convert 0 to 12
+            
+            timeElement.textContent = `${hours}:${minutes}`;
+            
+            // Use Intl.DateTimeFormat for better localization
+            const options = { weekday: 'long', month: 'long', day: 'numeric' };
+            dateElement.textContent = new Intl.DateTimeFormat('en-US', options).format(now);
+        }
+
+        // Call immediately and set interval
+        updateLockScreenTime();
+        setInterval(updateLockScreenTime, 1000);
+
+        // Click to unlock functionality
+        const lockScreen = document.getElementById('lock-screen');
+        const loginScreen = document.getElementById('login-screen');
+
+        lockScreen.addEventListener('click', () => {
+            lockScreen.style.display = 'none';
+            loginScreen.style.display = 'flex';
+        });
+
+        // PIN input handling with secure validation
+        const pinInput = document.querySelector('.pin-input input');
+        
+        pinInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                validatePIN();
+            }
+        });
+        
+        document.querySelector('.sign-in-button').addEventListener('click', validatePIN);
+        
+        function validatePIN() {
+            if (pinInput.value.length > 0) {
+                const loginAudio = new Audio('/Windows Logon.wav');
+                loginAudio.play().catch(err => console.log('Audio playback prevented'));
+                loginScreen.style.display = 'none';
+            } else {
+                // Show error or shake animation for empty PIN
+                pinInput.classList.add('error');
+                setTimeout(() => pinInput.classList.remove('error'), 500);
+                pinInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
